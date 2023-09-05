@@ -3,8 +3,9 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                echo "Building ..."
-                sh 'mvn clean install'
+                echo "Building ...",
+                echo "using the maven tool"
+                echo 'mvn clean install'
             }
             post{
                 success{
