@@ -9,7 +9,9 @@ pipeline{
             }
             post{
                 success{
-                    echo 'Build successful'
+                    mail to: "jacksonbouwman12@gmail.com",
+                    subject: "build status email logs",
+                    attatchLog: true
                 }
                 failure{
                     echo 'Build failed'
