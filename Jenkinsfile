@@ -11,7 +11,7 @@ pipeline{
                 success{
                     mail to: "jacksonbouwman12@gmail.com",
                     subject: "build status email logs",
-                    attatchLog: true
+                    attatchLog: true,
                 }
                 failure{
                     echo 'Build failed'
