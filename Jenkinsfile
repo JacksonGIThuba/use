@@ -42,7 +42,9 @@ pipeline{
             }
         }
         stage('Deploy to Production'){
-            echo "Deploying the application to a production server"
+            steps{
+                echo "Deploying to production"
+            }
         }
     }
 }
