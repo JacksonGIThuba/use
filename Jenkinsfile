@@ -3,31 +3,46 @@ pipeline{
     stages{
         stage('Build'){
             steps{
-                echo "building ..."
+                echo "Building ..."
+                sh 'mvn clean install'
             }
             post{
-                always{
-                    mail to: "jacksonbouwman12@gmail.com",
-                    subject: "build status email",
-                    body: "this worked blud"
-                    }
+                success{
+                    echo 'Build successful'
+                }
+                failure{
+                    echo 'Build failed'
+                }
            }
         }
         
-        stage('Test'){
+        stage('Unit and Integration Tests'){
             steps{
-                echo "Testing ..."
+                echo "Testing code ..."
             }
         }
-        stage('Deploy'){
+        stage('Code Analysis'){
             steps{
-                echo "deploying ..."
+                echo "Analysing code..."
             }
         }
-        stage('Complete'){
+        stage('Security Scan'){
             steps{
-                echo "Completed"
+                echo "Checking code for vulnerabilities"
             }
+        }
+        stage('Deploy to staging'){
+            steps{
+                echo "Deploying to application staging"
+            }
+        }
+        stage('Integration tests on staging'){
+            steps{
+                echo "Running integration tests on staging environment"
+            }
+        }
+        stage('Deploy to Production'){
+            echo "Deploying the application to a production server"
         }
     }
 }
