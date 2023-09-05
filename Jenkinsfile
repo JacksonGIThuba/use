@@ -9,13 +9,7 @@ pipeline{
             }
             post{
                 success{
-                    emailext(
-                        from: "jacksonbouwman12@gmail.com",
-                        subject: "build status email logs",
-                        body: "this was successfull",
-                        attachLog: true,
-                        to: "jacksonbouwman12@gmail.com"
-                    )
+                    echo 'Build successful'
                 }
                 failure{
                     echo 'Build failed'
@@ -30,10 +24,22 @@ pipeline{
             }
             post{
                 success{
-                    echo 'Testing successful'
+                    emailext(
+                        from: "jacksonbouwman12@gmail.com",
+                        subject: "Unit and Integration tests status logs",
+                        body: "this was successfull",
+                        attachLog: true,
+                        to: "jacksonbouwman12@gmail.com"
+                    )
                 }
                 failure{
-                    echo 'Testing failed'
+                    emailext(
+                        from: "jacksonbouwman12@gmail.com",
+                        subject: "Unit and Integration tests status logs",
+                        body: "this failed",
+                        attachLog: true,
+                        to: "jacksonbouwman12@gmail.com"
+                    )
                 }
            }
         }
@@ -58,10 +64,22 @@ pipeline{
             }
             post{
                 success{
-                    echo 'Scanning successful'
+                    emailext(
+                        from: "jacksonbouwman12@gmail.com",
+                        subject: "Security Scan status logs",
+                        body: "this was successfull",
+                        attachLog: true,
+                        to: "jacksonbouwman12@gmail.com"
+                    )
                 }
                 failure{
-                    echo 'Scanning failed'
+                    emailext(
+                        from: "jacksonbouwman12@gmail.com",
+                        subject: "Security Scan status logs",
+                        body: "this failed",
+                        attachLog: true,
+                        to: "jacksonbouwman12@gmail.com"
+                    )
                 }
            }
         }
@@ -86,10 +104,22 @@ pipeline{
             }
             post{
                 success{
-                    echo 'Testing successful'
+                    emailext(
+                        from: "jacksonbouwman12@gmail.com",
+                        subject: "Integration tests on staging",
+                        body: "this was successfull",
+                        attachLog: true,
+                        to: "jacksonbouwman12@gmail.com"
+                    )
                 }
                 failure{
-                    echo 'Testing failed'
+                    emailext(
+                        from: "jacksonbouwman12@gmail.com",
+                        subject: "Integration tests on staging",
+                        body: "this failed",
+                        attachLog: true,
+                        to: "jacksonbouwman12@gmail.com"
+                    )
                 }
            }
         }
