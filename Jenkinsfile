@@ -12,6 +12,7 @@ pipeline{
                     emailext(
                         to: "jacksonbouwman12@gmail.com",
                         subject: "build status email logs",
+                        body: "this was successfull"
                         attachLog: true,
                     )
                 }
